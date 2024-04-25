@@ -35,7 +35,7 @@ function App() {
       })
   }
   console.log(steamData);
-
+  const creationDate = steamData ? new Date(steamData.created * 1000).toLocaleDateString() : null;
   return (
     <div>
       <div>
@@ -66,12 +66,21 @@ function App() {
     <div>
       {loading && <p>Loading...</p>}
       {steamData && (
-        <div>
+        <div style={
+          {
+            padding: '10px 20px',
+            borderRadius: '5px',
+            border: '1px solid #ccc',
+            margin: '20px 40px',
+            backgroundColor: '#031127',
+          }
+        }>
           <h2>Steam Account Found</h2>
           <p>SteamID: {steamData.steamID}</p>
           <p>SteamID3: {steamData.steamId3}</p>
           <p>Custom URL: {steamData.url}</p>
           <p>Name: {steamData.nickname}</p>
+          <p>Account Created: {creationDate}</p>
         </div>
       )}
     </div>
